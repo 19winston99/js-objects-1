@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        "use strict";
+
+        let cars = [
+            { brand: "Audi", model: "A3", displacement: "1600cc", price: 35000 + "€" },
+            { brand: "Volks Wagen", model: "Golf GT", displacement: "1000cc", price: 49000 + "€" },
+            { brand: "Seat", model: "Leon", displacement: "1000cc", price: 22000 + "€" },
+            { brand: "Peugeot", model: "208", displacement: "1200cc", price: 19000 + "€" }
+        ];
+
+        //print the elements in objcet into HTML
+        function printCars(list) {
+            for (let i = 0; i < list.length; i++) {
+                let p = document.createElement("p");
+                p.innerText = list[i].brand + " - " + list[i].model + " - " + list[i].displacement + " - " + list[i].price;
+                document.body.appendChild(p);
+            }
+        }
+        printCars(cars);
+
+        //find min price of the cars
+        function minPrice(list) {
+            let min = list[0].price;
+            let idMin = 0;
+            for (let i = 0; i < list.length; i++) {
+                if (list[i].price <= min) {
+                    min = list[i].price;
+                    idMin = i;
+                }
+            } return list[idMin];
+        }
+        let p = minPrice(cars);
+        let title = document.createElement("h3");
+        title.innerText = "La macchina più economica è: " + p.brand + " " + p.model + ", " + p.price;
+        document.body.appendChild(title);
+
+        //find max price of the cars
+        function maxPrice(list) {
+            let max = list[0].price;
+            let idMax = 0;
+            for (let i = 0; i < list.length; i++) {
+                if (list[i].price > max) {
+                    max = list[i].price;
+                    idMax = i;
+                }
+            } return list[idMax];
+        }
+        let p1 = maxPrice(cars);
+        let title1 = document.createElement("h3");
+        title1.innerText = "La macchina più costosa è: " + p1.brand + " " + p1.model + ", " + p1.price;
+        document.body.appendChild(title1);
+
+    </script>
+</body>
+
+</html>
